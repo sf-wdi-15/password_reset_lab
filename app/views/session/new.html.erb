@@ -1,4 +1,10 @@
 <h1>Login</h1>
+<% flash.each do |k,v| %>
+  <h2 id="<%= k %>"><%= v %></h2>
+<% end %>
+
+
+<%= flash.map{|k,v| v}.join %>
 
 <%= form_for :user do |f| %>
 <%= f.text_field :email, placeholder: "Enter your email!" %>
