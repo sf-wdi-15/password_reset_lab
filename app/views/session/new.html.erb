@@ -4,7 +4,7 @@
 <% end %>
 
 
-<%= flash.map{|k,v| v}.join %>
+
 
 <%= form_for :user do |f| %>
 <%= f.text_field :email, placeholder: "Enter your email!" %>
@@ -12,3 +12,6 @@
 <%= f.submit "Login" %>
 
 <% end %>
+
+<%= link_to "Forgot Password?", new_password_path %>
+
