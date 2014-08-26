@@ -5,10 +5,15 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: {case_sensitive: false}
   # validates :password, length: {minimum: 3}, on: :create
 
-  # Now I can do User.authenticate("anil@anil.com", "123")
+  def set_password_reset
+    self.code = SecureRandom.urlsafe_base64
+    self.expires_at = 4.hours.from_now
+    self.save!
+  end
+
+
+
   def self.authenticate email, password
-    # user if user and user.authenticate password
-    # user = User.find_by_email email
     User.find_by_email(email).try(:authenticate,password)
   end
 
