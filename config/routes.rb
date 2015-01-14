@@ -3,11 +3,13 @@ Rails.application.routes.draw do
 
   root "site#index"
   get "/login" => "session#new"
+#  get "/passwords/:id/edit" => "passwords#edit"
   post "/login" => "session#create"
 
   delete "/logout" => "session#destroy"
   get "/logout" => "session#destroy" #TODO: DELETE THIS BEFORE PRODUCTION
 
+  post "/passwords/:id", to: "passwords#update"
   resources :passwords
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
